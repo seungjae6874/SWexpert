@@ -16,30 +16,20 @@ int main()
 		for(int j = 0; j < K; j++)
 		{
 			cin>>m;
-			lastm[cnt] = m;
-			cnt++;
-			cout<<"Money : "<<m<<endl;
+			//cout<<"Money : "<<m<<endl;
 			if(m==0){
-				int p = 2;
-				if(lastm[cnt-p] == 0){
-					while(lastm[p] != 0){
-						p++;
-						cout<<p<<endl;
-					}
-					sum -= lastm[p];	
-				}
-				else{
-					sum -= lastm[cnt-2];
-				}
+				sum -= lastm[--cnt];
 				
 					 
 			}
 			else{
+				lastm[cnt] = m;
+				cnt++;
 				sum += m;
 			}
-			cout<<"Sum : "<<sum<<endl;
+			//cout<<"Sum : "<<sum<<endl;
 		}
-		
+		cout<<"# "<<i+1<<" "<<sum<<endl; 
 		
 	}
 }
