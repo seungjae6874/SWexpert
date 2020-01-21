@@ -30,6 +30,7 @@ int main()
 			index++;
 			X /= 10;
 		}
+		//배열의 원소를 정렬 한 후에 수의 변화가 있는 사이 간격을 cnt로 계산 
 		sort(array,array+len);
 		for(int i = 0; i<len; i++){
 			if(i>0 && (array[i] != array[i-1])){
