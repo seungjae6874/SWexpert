@@ -44,13 +44,13 @@ int main(){
 				cout<<x<<"번 차량입니다."<<endl; 
 				if(cnt == n){//주차장 꽉참 
 					cout<<"대기실 "<<turn<<"번으로 이동합니다."<<endl;
-					wait[turn++] = x-1; //대기실에 자동차 번호를 저장 
+					wait[turn++] = x; //대기실에 자동차 번호를 저장 
 					
 				} 
 				else if(cnt < n){//주차장 자리 있음 
 					for(int p =0; p<n; p++){
 						if(rpark[p] < 1){ //비어있는 맨 앞자리부터 
-							rpark[p] = x-1; //주차위치에 차  번호 저장
+							rpark[p] = x; //주차위치에 차  번호 저장
 							carsparkinglot[x-1] = p; //차에 주차위치 저장 
 							cout<<"주차공간이 있어 "<<p<<" 번 위치에 주차합니다."<<endl;
 							break;		
@@ -66,23 +66,24 @@ int main(){
 				cout<<-x<<"번 차량입니다."<<endl; 		
 				realx = -x;
 				sum[realx-1] = park[carsparkinglot[realx-1]]*weight[realx-1];
+				cout<<"주차요금은 "<<sum[realx-1]<<endl;
 				cout<<realx<<"번 차량이 출차합니다."<<carsparkinglot[realx-1]<<"번 주차칸이 비어집니다."<<endl; 
 				//이건 wait하는 차가 있어야 하는 것 
 				if(wait[0] > 0){
-					carsparkinglot[wait[0]] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
-					carsparkinglot[realx-1] = 0;
+					carsparkinglot[wait[0]-1] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
 					cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
+					carsparkinglot[realx-1] = 0;
 					
 				}
 				else{
-					carsparkinglot[realx-1] = 0;	
+					rpark[carsparkinglot[realx-1]] = 0;	
 					
 				}
 				cnt--;
 				//carsparkinglot[wait[0]] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
 				
 				//cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
-				for(int i = 1; i< turn; i++){
+				for(int i = 1; i< m; i++){
 					//대기실 번호 앞으로 한칸씩 당겨주기
 					wait[i-1] = wait[i]; 
 				} 
