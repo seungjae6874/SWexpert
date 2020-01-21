@@ -27,7 +27,7 @@ int main(){
 			cout<<b<<"번 차량의 무게는 "<<weight[b]<<"입니다."<<endl;
 		}
 		//총 주차요금 계산저장 배열 
-		int *sum = new int[m];
+		int sum[m] = {0,};
 		int cnt = 0;//주차장의 현재까지 채워져 있는 위치포인터cnt는 최대 n-1이다.
 		int realx=0;
 		int wait[m] = {0,};//주차장 꽉 찼을 때 대기하는 배열 
