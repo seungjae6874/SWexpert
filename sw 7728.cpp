@@ -1,7 +1,7 @@
 #include<iostream>
-#include<cmath>
 #include<algorithm>
 using namespace std;
+//입력 받은 수의 길이를 계산하는 함수 
 int fun(int y){
 	int c=0;
 	while(y>0){
@@ -9,20 +9,6 @@ int fun(int y){
 		c++;
 	}
 	return c;
-}
-//각 수를 배열에 담는 함수 
-int fun2(int l,int x){
-	int *array = new int[l];
-	int l2 = l-1;
-	int index = 0;
-	int rest =0;
-	for(int i =0; i<l; i++){
-		rest = x%10;
-		array[index] = rest;
-		cout<<array[index]<<endl;
-		index++;
-		x /= 10;
-	}
 }
 int main()
 {
@@ -50,6 +36,6 @@ int main()
 				cnt++;
 			}
 		}
-		cout<<"#"<<i<<" "<<cnt<<endl;
+		cout<<"#"<<i+1<<" "<<cnt<<endl;
 	}
 }
