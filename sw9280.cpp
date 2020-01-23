@@ -64,7 +64,7 @@ int main(){
 						}
 					}
 					cout<<"주차 후 반복문 탈출cnt는 "<<cnt<<endl;					
-					//cnt++;
+					
 				}
 				 
 			}
@@ -94,12 +94,7 @@ int main(){
 					rpark[carsparkinglot[realx-1]] = 0;	
 					count--;
 					
-				}
-				//carsparkinglot[wait[0]] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
-				
-				//cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
-				 
-				 
+				} 
 				 
 			}
 		}
