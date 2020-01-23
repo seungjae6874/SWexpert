@@ -28,6 +28,7 @@ int main(){
 		}
 		//총 주차요금 계산저장 배열 
 		int sum[m] = {0,};
+		int count = 0;
 		int cnt = 0;//주차장의 현재까지 채워져 있는 위치포인터cnt는 최대 n-1이다.
 		int realx=0;
 		int wait[m] = {0,};//주차장 꽉 찼을 때 대기하는 배열 
@@ -39,30 +40,40 @@ int main(){
 			cin>>x;
 					
 			if(x>0){
+				if(x > m){
+					cout<<"잘못된 차번호 입니다 다시 입력해주세요 ";
+					cin>>x;
+				}
 				//양수이므로 주차들어옴 
 				//여기서 중요한건 주차장은 큐 처럼 선입 선출이다. 따라서 cnt가 n이면 대기해야함
-				cout<<x<<"번 차량입니다."<<endl; 
-				if(cnt == n){//주차장 꽉참 
+				cout<<x<<"번 차량입니다."<<endl;
+				cout<<"차 들어오기 전 count : "<<count<<endl;
+				if(count >= n){//주차장 꽉참 
 					cout<<"대기실 "<<turn<<"번으로 이동합니다."<<endl;
 					wait[turn++] = x; //대기실에 자동차 번호를 저장 
 					
 				} 
-				else if(cnt < n){//주차장 자리 있음 
+				else if(count < n){//주차장 자리 있음 
 					for(int p =0; p<n; p++){
 						if(rpark[p] < 1){ //비어있는 맨 앞자리부터 
 							rpark[p] = x; //주차위치에 차  번호 저장
+							count++;
 							carsparkinglot[x-1] = p; //차에 주차위치 저장 
-							cout<<"주차공간이 있어 "<<p<<" 번 위치에 주차합니다."<<endl;
+							cout<<"주차공간이 있어 "<<p<<" 번 위치에 주차합니다. count는 "<<count<<endl;
 							break;		
 						}
 					}
 					cout<<"주차 후 반복문 탈출cnt는 "<<cnt<<endl;					
-					cnt++;
+					//cnt++;
 				}
 				 
 			}
 			else if(x < 0){//차가 주차장 나가서 자리 생김-> 계산하고, 자리 비우기
 			//그리고 대기배열에서 맨 앞에 차 뺴주기
+				if(x < -m){
+					cout<<"잘못된 차번호 입니다. 다시 입력해주세요 : ";
+					cin>>x;
+				}
 				cout<<-x<<"번 차량입니다."<<endl; 		
 				realx = -x;
 				sum[realx-1] = park[carsparkinglot[realx-1]]*weight[realx-1];
@@ -79,7 +90,7 @@ int main(){
 					rpark[carsparkinglot[realx-1]] = 0;	
 					
 				}
-				cnt--;
+				count--;
 				//carsparkinglot[wait[0]] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
 				
 				//cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
