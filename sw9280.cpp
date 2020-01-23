@@ -82,22 +82,23 @@ int main(){
 				//이건 wait하는 차가 있어야 하는 것 
 				if(wait[0] > 0){
 					carsparkinglot[wait[0]-1] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
-					cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
+					cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[wait[0]-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
 					carsparkinglot[realx-1] = 0;
-					
+					for(int i = 1; i< m; i++){
+					//대기실 번호 앞으로 한칸씩 당겨주기
+						wait[i-1] = wait[i]; 
+					}
+					turn -= 1;
 				}
 				else{
 					rpark[carsparkinglot[realx-1]] = 0;	
+					count--;
 					
 				}
-				count--;
 				//carsparkinglot[wait[0]] = carsparkinglot[realx-1];//새로 들어온 차에 주차위치 번호 할당
 				
 				//cout<<"대기실의 "<<wait[0]<<"번 차량이 "<<carsparkinglot[realx-1]<<" 번 주차칸으로 들어옵니다."<<endl; 
-				for(int i = 1; i< m; i++){
-					//대기실 번호 앞으로 한칸씩 당겨주기
-					wait[i-1] = wait[i]; 
-				} 
+				 
 				 
 				 
 			}
