@@ -2,15 +2,12 @@
 #include <algorithm>
 using namespace std;
 int fun(int x){
-	int len = 0;
 	int sum =0;
 	while(x !=0){
 		sum += x % 10; 
 		x /= 10;
-		len++;
 	}
 	return sum;
-	
 }
 int main(){
 	int T;
@@ -25,6 +22,7 @@ int main(){
 		int min = *min_element(sum,sum+10);
 		int max = *max_element(sum,sum+10);
 		
-		cout<<"#"<<i+1<<" "<<min<<" "<<max<<endl;
+		cout<<"#"<<i+1<<" "<<max<<" "<<min<<endl;
 	}
+	return 0;
 }
