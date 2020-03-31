@@ -9,8 +9,7 @@ int main(){
 		int n;
 		cin>>n;
 		int *coin = new int[n];
-		int count = 0;
-			
+		unsigned long long count = 0;		
 		for(int a = 0; a< n; a++){
 			coin[a] = a+1;
 		}
@@ -36,15 +35,13 @@ int main(){
 				}
 			}
 			for(int k = 0; k < n; k++){
-				//cout<<fb[k];
 				if(fb[k] == 1){
 					count++;
 				}	
 			}
-			//cout<<endl;
-			
 		}while(next_permutation(coin, coin+n));
-		cout<<count<<endl;
+		unsigned long long ans = count%1000000007;
+		cout<<"#"<<i+1<<" "<<ans<<endl;
 	}
 	return 0;
 }
